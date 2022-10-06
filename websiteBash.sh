@@ -24,7 +24,7 @@ echo "4 - ecommerce"
 read category;
 #deleting /var/www/html/ dir
 sudo rm -rf /var/www/html/*
-if ($category -eq 1)
+if [ $category -eq 1 ];
 then
 	cd /tmp
 	sudo mkdir webfiles
@@ -37,20 +37,24 @@ then
     # deleting temp File
     cd /tmp
 	sudo rm -rf webfiles 
-elif ($category -eq 2) 
+    echo "website deploy sucessfully"
+    echo "Check from the URL: http://192.168.0.52/public_html/"
+elif [ $category -eq 2 ];
 then
     cd /tmp
 	sudo mkdir webfiles
 	cd webfiles
 	sudo wget https://www.free-css.com/assets/files/free-css-templates/download/page281/biznews.zip &> /dev/null
 	sudo unzip biznews.zip &> /dev/null
-	cd biznews
+	cd free-news-website-template
 	cp -r * /var/www/html/
     systemctl restart $SVC
     # deleting temp File
     cd /tmp
 	sudo rm -rf webfiles 
-elif ($category -eq 3) 
+    echo "website deploy sucessfully"
+    echo "Check from the URL: http://192.168.0.52/"
+elif [ $category -eq 3 ];
 then
     cd /tmp
 	sudo mkdir webfiles
@@ -63,20 +67,24 @@ then
     # deleting temp File
     cd /tmp
 	sudo rm -rf webfiles 
-elif ($category -eq 4) 
+    echo "website deploy sucessfully"
+    echo "Check from the URL: http://192.168.0.52/"
+elif [ $category -eq 4 ];
 then
     cd /tmp
 	sudo mkdir webfiles
 	cd webfiles
 	sudo wget https://www.free-css.com/assets/files/free-css-templates/download/page281/romofyi.zip &> /dev/null
-	sudo unzip romofyi-doe.zip &> /dev/null
-	cd romofyi
+	sudo unzip romofyi.zip &> /dev/null
+	cd romofyi-html
 	cp -r * /var/www/html/
     systemctl restart $SVC
     # deleting temp File
     cd /tmp
 	sudo rm -rf webfiles 
+    echo "website deploy sucessfully"
+    echo "Check from the URL: http://192.168.0.52/"
 else
 echo "Did not select the proper option"
-echo "********"Program Ending********"
+echo "********Program Ending********"
 fi
